@@ -12,47 +12,7 @@ import pandas as pd
 from matplotlib import pyplot as plt
 import numpy as np
 import datetime
-import smtplib
-##############################FOR THE EMAIL UPDATION###########################################
-EMAIL_ADDRESS = "" ##senders email id
-PASSWORD = "" ## senders password
-EMAIL_ADDRESS_1 = "" ## receivers id
-def send_email(subject, msg):
- try:
- server = smtplib.SMTP('smtp.gmail.com:587')
- server.ehlo()
- server.starttls()
- server.login(EMAIL_ADDRESS,PASSWORD)
- message = 'Subject: {}\n\n{}'.format(subject, msg)
- server.sendmail(EMAIL_ADDRESS, EMAIL_ADDRESS_1, message)
- server.quit()
- print("Success: Email sent!")
- except:
- print("Email failed to send.")
-subject = "LINK OF TODAYS DATA"
-msg = "https://docs.google.com/spreadsheets/d/1_9F7ZwexuZi5gPr8DoYbNcLuqobwI_2Q_0kI7TvDBU/edit#gid=889326813"
-send_email(subject, msg)
-c=0
-while c<2:
- import datetime
- send_time = datetime.datetime.now()
- hour=send_time.strftime("%H")
- min=send_time.strftime("%M")
- sec=send_time.strftime("%S")
- print("H=",hour,"M=",min,"s=",sec)
- check_Hour="06"
- check_Min="51"
- check_Sec="00"
- print("enterd in while loop")
- if hour == check_Hour:
- if min==check_Min:
- if sec==check_Sec:
- print("entered in if loop")
- print("sending mail>>>>>>>>>")
- subject = "LINK OF TODAYS DATA"
- msg = "https://docs.google.com/spreadsheets/d/1_9F7ZwexuZi5gPr8DoYbNcLuqobwI_2Q_0kI7TvDBU/edit#gid=889326813"
- send_email(subject, msg)
- break
+
 ####################### FUNCTION TO EXTRACT NUMBER PALTE FORM AN IMAGE #############
 def main1(img_path):
  global df
